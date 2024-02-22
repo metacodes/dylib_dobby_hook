@@ -41,5 +41,6 @@ cp -f "${BUILT_PRODUCTS_DIR}/libdobby.dylib" "${app_bundle_framework}"
 
 "${app_bundle_path}/insert_dylib" --weak --all-yes "@rpath/${prefix}${dylib_name}.dylib" "$app_executable_backup_path" "$app_executable_path"
 
-
+xattr -r -d com.apple.quarantine "/Applications/${app_name}.app/"
+codesign -f -s - --deep "/Applications/${app_name}.app/"
 
